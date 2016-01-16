@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
                                   :search_index => 'All' , 
                                   :response_group => 'Medium' , 
                                   :country => 'jp')
-      @amazon_items = response.items
+      @amazon_items = response.items #.page(params[:page])
     end
   end
 
