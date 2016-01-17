@@ -65,7 +65,7 @@ class OwnershipsController < ApplicationController
     have = current_user.unhave(@item)
     have.destroy if have
     
-    end # あとはボタンの切り替え・遷移先の振り替え？
+    end
 
   end
 end
