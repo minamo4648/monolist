@@ -34,13 +34,13 @@ class OwnershipsController < ApplicationController
 
   if params[:type] == "Have"
   
-    current_user.wants.find_or_create_by(@item.id)
+    current_user.have(@item)
   
   end
   
   if params[:type] == "Want"
   
-    current_user.haves.find_or_create_by(@item.id)
+    current_user.want(@item)
   
   end
 
@@ -55,14 +55,14 @@ class OwnershipsController < ApplicationController
 
     if params[:type] == "Want"
     
-    want = current_user.wants.find_by(@item.id)
+    want = current_user.unwant(@item)
     want.destroy if want
     
     end
     
     if params[:type] == "Have"
     
-    have = current_user.haves.find_by(@item.id)
+    have = current_user.unhave(@item)
     have.destroy if have
     
     end # あとはボタンの切り替え・遷移先の振り替え？
