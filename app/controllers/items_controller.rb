@@ -13,6 +13,11 @@ class ItemsController < ApplicationController
   end
 
   def show
+    
+    @item = Item.find(params[:id])
+    @have_users = @item.have_users
+    @want_users = @item.want_users
+    
   end
 
   private
