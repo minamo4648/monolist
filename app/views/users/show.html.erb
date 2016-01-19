@@ -1,3 +1,5 @@
+<head>
+
   <% content_for :head do %>
   
     <title><%= @user.name %> - monolist</title>
@@ -6,7 +8,13 @@
   
   <% end %>
 
+</head>
+
+<body>
+
 <%= render 'profile' , user: @user %>
 
 
 <%= render 'items/list' , items: @items %>
+
+</body>
