@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <% item_ids.each do |item_id| %>
+      <div class="item-box">
+        <div class="image">
+          <div class="img-wrap">
+            <% if Item.find(item_id).large_image.present? %>
+              <img src="<%= Item.find(item_id).large_image %>" />
+            <% else %>
+              <%= image_tag("no-image.png" , alt: Item.find(item_id).title) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="detail">
+          <p class="title">
+            <%= Item.find(item_id).title %><br />
+          </p>
+        </div>
+        <div class="action clearfix">
+          <%= link_to "" , ownerships_path(asin: Item.find(item_id).asin , type: "Want") ,
+                      :class => "want-#{Item.find(item_id).asin} btn-want btn btn-danger btn-sm want",
+                      :remote => true,
+                      :method => :post %>
+          <%= link_to "" , ownerships_path(asin: Item.find(item_id).asin , type: "Have") ,
+                      :class => "have-#{Item.find(item_id).asin} btn-have btn btn-warning btn-sm have",
+                      :remote => true,
+                      :method => :post %>
+        </div>
+        <div class="v" >
+          <% if type == "haves" %>
+            <%= Have.group(:item_id).order('count_item_id desc').limit(10).count('item_id')[item_id] %>
+            <%= type %>
+          <% else %>
+            <%= Want.group(:item_id).order('count_item_id desc').limit(10).count('item_id')[item_id] %>
+            <%= type %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <%#= paginate(amazon_items) %>
+  </div>
+</div>
