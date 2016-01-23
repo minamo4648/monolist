@@ -36,11 +36,16 @@ img {
 
 .gravatar {
   border-radius: 100%;
+
+}
+
+#z .gravatar {
+
   border:1px #999 solid;
 
 }
 
-.gravatar:hover {
+#z .gravatar:hover {
 
   border:1px #000 solid;
 
