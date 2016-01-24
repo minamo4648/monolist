@@ -24,7 +24,6 @@ class OwnershipsController < ApplicationController
       @item.medium_image = amazon_item.get("MediumImage/URL")
       @item.large_image  = amazon_item.get("LargeImage/URL")
       @item.detail_page_url = amazon_item.get("DetailPageURL")
-      @item.salesrank = amazon_item.get("SalesRank")
       @item.raw_info        = amazon_item.get_hash
       @item.save!
     end
